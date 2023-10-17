@@ -12,14 +12,13 @@ The MusicNote Extractor and Sheet Music Generator is a mobile application that a
 - **Sheet Music Generation**: Automatically generate sheet music in standard notation format (e.g., MusicXML).
 - **User-Friendly Interface**: Intuitive and easy-to-use interface for both novice and professional musicians.
 - **Collaboration**: Collaborate with others on transcribing and arranging sheet music.
-- **Cloud Integration**: Store and sync your musical projects securely in the cloud.
 - **Sharing**: Share your sheet music with others or export it to various formats.
 
 ## Technology Stack
 - **Audio Processing**: Leveraging state-of-the-art audio signal processing libraries.
 - **Machine Learning**: Implementing Music Information Retrieval (MIR) techniques.
 - **Backend**: Utilizing cloud services for secure data storage and processing.
-- **Frontend**: Developed with Python.
+- **Frontend**: Developed with Python and ReactJS
 
 ## Installation
 1. Clone this repository.
