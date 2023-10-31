@@ -4,12 +4,21 @@ import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
 const LoginPage = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [loginError, setLoginError] = useState(false);
 
   const handleLogin = () => {
-    // Implement login logic here.
-    // Add authentication and navigation to the next page.
-    // For now, we'll just navigate to the "Menu" page as a placeholder.
-    navigation.navigate('Menu');
+
+    const validEmail = 'user@gmail.com';
+    const validPassword = '123456789';
+
+    if (email === validEmail && password === validPassword) {
+      // Navigate to the "Menu" page upon successful login
+      navigation.navigate('Menu');
+      setLoginError(false);
+    } else {
+      // Display error message if credentials are incorrect
+      setLoginError(true);
+    }
   };
 
   return (
@@ -26,6 +35,7 @@ const LoginPage = ({ navigation }) => {
         secureTextEntry={true}
         onChangeText={text => setPassword(text)}
       />
+      {loginError && <Text style={styles.errorText}>Invalid email or password</Text>}
       <Button title="Login" onPress={handleLogin} />
       <Button title="Register" onPress={() => navigation.navigate('Register')} />
     </View>
@@ -37,15 +47,23 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: '#ffffff',
+    paddingHorizontal: 20,
+  },
+  logo: {
+    width: 120,
+    height: 120,
+    marginBottom: 20,
   },
   heading: {
     fontSize: 24,
+    fontWeight: 'bold',
     marginBottom: 20,
   },
   input: {
-    width: '80%',
+    width: '100%',
     height: 40,
-    borderColor: 'gray',
+    borderColor: '#ccc',
     borderWidth: 1,
     borderRadius: 5,
     marginBottom: 10,
