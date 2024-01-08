@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+  background: radial-gradient( #96c93d, #00b09b );
+  width: 100%;
+  height: 100%;
 }
 
 .App-logo {
@@ -34,4 +37,68 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.Background {
+  width: 96vw;
+  height: 95vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.Background-login {
+  width: 96vw;
+  height: 95vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.Upload-button {
+  background-color: #1ddecb;
+  color: #000000;
+  margin-right: 1vw;
+  margin-top: 1vh;
+}
+
+.File-input {
+  display: none;
+}
+
+.Text-button {
+  color: #000000;
+
+}
+
+.File-list {
+  width: 96vw;
+  height: 65vh;
+  margin-top: 4vh;
+  overflow: auto;
+
+}
+
+.Loader {
+  width: 96vw;
+  height: 65vh;
+  margin-top: 4vh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.Card {
+  background-color: rgba(0,0,0,0.4);
+  border-radius: 5px;
+  width: 45.5vw;
+  margin: 0.5vw;
+
+  
+  overflow: hidden;
 }

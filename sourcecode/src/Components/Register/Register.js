@@ -2,8 +2,11 @@ import '../../App.css'
 import axios from 'axios';
 import {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux'
-import { Button, TextField } from '@mui/material';
+import { Button, TextField, } from '@mui/material';
 import { setView } from '../../Slicers/ViewSlice';
+import logo from '../../Media/logo.png'
+import name from '../../Media/name.png'
+import pathstring from '../Utils/pathstring';
 
 export default function Register(){
     const [username, setUsername] = useState('');
@@ -22,14 +25,15 @@ export default function Register(){
 
         // });
 
-        axios.post('http://127.0.0.1:5000/createAcc',{
+        axios.post(pathstring + '/createAcc',{
                 username: username,
                 password: password,
             }).then((res) => {
                 // JSON response is handled by a json() promises
-                alert(JSON.stringify(res.data))
+                //alert(JSON.stringify(res.data))
            });
         //alert("User Added");
+        dispatch(setView("login"));
     }
 
     const handleGoToLogin = () =>{
@@ -37,7 +41,10 @@ export default function Register(){
     }
 
     return (
-        <div className='Background'>
+        <div className='Background-login'>
+            <img src={logo} alt="Logo" style={{width:'24vw', position:'fixed', top:'2vh', left:'38vw'}} />
+            <img src={name} alt="name" style={{width:'70vw', position:'fixed', top:'20vh', left:'15vw'}} />
+
             <h1>Create an Account</h1>
 
             <TextField label="Username" variant="standard" 
@@ -56,6 +63,7 @@ export default function Register(){
             />
             <Button
                 onClick={handleCreateAccount}
+                disabled={username === '' || password === '' ? true : false}
             >
                 Register
             </Button>

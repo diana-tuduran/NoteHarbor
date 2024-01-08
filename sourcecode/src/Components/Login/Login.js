@@ -2,8 +2,10 @@ import '../../App.css'
 import axios from 'axios';
 import {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux'
-import { Button, TextField, Typography } from '@mui/material';
+import { Button, TextField, } from '@mui/material';
 import { setView } from '../../Slicers/ViewSlice';
+import name_logo from '../../Media/name_logo.png'
+import pathstring from '../Utils/pathstring';
 
 export default function Login(props){
     const {user, setUser} = props
@@ -14,10 +16,10 @@ export default function Login(props){
     const view = useSelector((state) => state.view.view);
     const dispatch = useDispatch();
 
-    const handleLogin = () =>{
+    const handleLogin = async () =>{
         //alert("USERNAME: " + username + "\nPASSWORD: " + password);
 
-        axios.post('http://127.0.0.1:5000/login',{
+        axios.post(pathstring + '/login',{
                 username: username,
                 password: password,
             }).then((res) => {
@@ -39,7 +41,10 @@ export default function Login(props){
     }
 
     return (
-        <div className='Background'>
+        <div className='Background-login'>
+            <img src={name_logo} alt="Logo" style={{width:'40vw', }} />
+
+
             <h1>Login</h1>
 
             <TextField label="Username" variant="standard" 
@@ -56,13 +61,14 @@ export default function Login(props){
                     setPassword(event.target.value);
                   }}
             />
-            <Button
+            <Button className='Text-button' 
                 onClick={handleLogin}
+                disabled={username === '' || password === '' ? true : false}
             >
                 Log In
             </Button>
 
-            <Button  
+            <Button  className='Text-button' 
                 onClick={handleGoToRegister}
             >
                 Create an account

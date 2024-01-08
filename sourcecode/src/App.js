@@ -1,5 +1,4 @@
 import './App.css'
-import Axios from 'axios';
 import {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux'
 
@@ -11,14 +10,14 @@ import MainPage from './Components/MainPage/MainPage';
 
 function App() {
     const view = useSelector((state) => state.view.view);
+    const [user, setUser] = useState([]);
 
 
     return (
-        <div className="App">
-            <Header />
+        <div className='App'>
             {view === 'login'
               ?
-              <Login />
+              <Login user={user} setUser={setUser}/>
               : 
               view === 'register'
               ?
@@ -26,7 +25,10 @@ function App() {
               :
               view === 'main'
               ?
-              <MainPage />
+              <>
+                <Header user={user} setUser={setUser}/>
+                <MainPage user={user} setUser={setUser}/>
+              </>
               :
               <h1>Wrong view</h1>
             }
